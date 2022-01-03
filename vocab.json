@@ -1,0 +1,72 @@
+{
+    "title": "A meta-schema describing the syntax of the JSON translation vocabulary",
+    "$id": "https://jschon.dev/ext/translate/vocab",
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$vocabulary": {
+        "https://jschon.dev/ext/translate": true
+    },
+    "$dynamicAnchor": "meta",
+    "type": ["object", "boolean"],
+    "properties": {
+        "translate": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "translateScheme": {
+                        "type": "string"
+                    },
+                    "translateRule": {
+                        "$dynamicRef": "#translate-rule"
+                    },
+                    "translateTarget": {
+                        "type": "string",
+                        "format": "json-pointer"
+                    }
+                }
+            }
+        }
+    },
+    "$defs": {
+        "translateRuleSchema": {
+            "$dynamicAnchor": "translate-rule",
+            "type": "object",
+            "properties": {
+                "translateTargetInit": true,
+                "translateTargetType": {
+                    "enum": ["null", "boolean", "integer", "number", "string", "array", "object"]
+                },
+                "translateSourceProperty": {
+                    "type": "string"
+                },
+                "translateSourceProperties": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "translateSourcePropertiesSeparator": {
+                    "type": "string"
+                },
+                "translateConverter": {
+                    "type": "string"
+                },
+                "translateStringMap": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "type": "string"
+                    }
+                },
+                "translateItems": {
+                    "$dynamicRef": "#translate-rule"
+                },
+                "translateProperties": {
+                    "type": "object",
+                    "additionalProperties": {
+                        "$dynamicRef": "#translate-rule"
+                    }
+                }
+            }
+        }
+    }
+}
