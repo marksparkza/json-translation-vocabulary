@@ -1,69 +1,79 @@
 {
     "title": "A meta-schema describing the syntax of the JSON translation vocabulary",
-    "$id": "https://jschon.dev/ext/translate/vocab",
+    "$id": "https://jschon.dev/ext/translation/vocab",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$vocabulary": {
-        "https://jschon.dev/ext/translate": true
+        "https://jschon.dev/ext/translation": true
     },
     "$dynamicAnchor": "meta",
     "type": ["object", "boolean"],
     "properties": {
-        "translate": {
+        "translations": {
             "type": "array",
             "items": {
                 "type": "object",
                 "properties": {
-                    "translateScheme": {
+                    "t9nScheme": {
                         "type": "string"
                     },
-                    "translateRule": {
-                        "$dynamicRef": "#translate-rule"
-                    },
-                    "translateTarget": {
+                    "t9nTarget": {
                         "type": "string",
                         "format": "json-pointer"
+                    },
+                    "t9nRule": {
+                        "$dynamicRef": "#t9n-rule"
                     }
-                }
+                },
+                "required": [
+                    "t9nScheme",
+                    "t9nTarget",
+                    "t9nRule"
+                ]
             }
         }
     },
     "$defs": {
-        "translateRuleSchema": {
-            "$dynamicAnchor": "translate-rule",
+        "t9nRuleSchema": {
+            "$dynamicAnchor": "t9n-rule",
             "type": "object",
             "properties": {
-                "translateTargetInit": true,
-                "translateTargetType": {
-                    "enum": ["null", "boolean", "integer", "number", "string", "array", "object"]
+                "t9nTargetInit": true,
+                "t9nTargetType": {
+                    "enum": [
+                        "null",
+                        "boolean",
+                        "integer",
+                        "number",
+                        "string",
+                        "array",
+                        "object"
+                    ]
                 },
-                "translateSourceProperty": {
+                "t9nSourceProperty": {
                     "type": "string"
                 },
-                "translateSourceProperties": {
+                "t9nSourceProperties": {
                     "type": "array",
                     "items": {
                         "type": "string"
                     }
                 },
-                "translateSourcePropertiesSeparator": {
+                "t9nSourcePropertiesSeparator": {
                     "type": "string"
                 },
-                "translateConverter": {
+                "t9nFilter": {
                     "type": "string"
                 },
-                "translateStringMap": {
+                "t9nMap": {
+                    "type": "object"
+                },
+                "t9nItems": {
+                    "$dynamicRef": "#t9n-rule"
+                },
+                "t9nProperties": {
                     "type": "object",
                     "additionalProperties": {
-                        "type": "string"
-                    }
-                },
-                "translateItems": {
-                    "$dynamicRef": "#translate-rule"
-                },
-                "translateProperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$dynamicRef": "#translate-rule"
+                        "$dynamicRef": "#t9n-rule"
                     }
                 }
             }

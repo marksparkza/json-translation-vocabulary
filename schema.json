@@ -1,6 +1,6 @@
 {
     "title": "An extension to the JSON Schema 2020-12 meta-schema, incorporating a JSON translation vocabulary",
-    "$id": "https://jschon.dev/ext/translate/schema",
+    "$id": "https://jschon.dev/ext/translation/schema",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$vocabulary": {
         "https://json-schema.org/draft/2020-12/vocab/core": true,
@@ -10,7 +10,7 @@
         "https://json-schema.org/draft/2020-12/vocab/meta-data": true,
         "https://json-schema.org/draft/2020-12/vocab/format-annotation": true,
         "https://json-schema.org/draft/2020-12/vocab/content": true,
-        "https://jschon.dev/ext/translate": true
+        "https://jschon.dev/ext/translation": true
     },
     "$dynamicAnchor": "meta",
     "type": ["object", "boolean"],
@@ -22,6 +22,6 @@
         {"$ref": "https://json-schema.org/draft/2020-12/meta/meta-data"},
         {"$ref": "https://json-schema.org/draft/2020-12/meta/format-annotation"},
         {"$ref": "https://json-schema.org/draft/2020-12/meta/content"},
-        {"$ref": "https://jschon.dev/ext/translate/vocab"}
+        {"$ref": "https://jschon.dev/ext/translation/vocab"}
     ]
 }
