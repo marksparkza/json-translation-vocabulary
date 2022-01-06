@@ -11,6 +11,7 @@
         "translations": {
             "type": "array",
             "items": {
+                "$dynamicAnchor": "t9n-schema",
                 "type": "object",
                 "properties": {
                     "t9nScheme": {
@@ -19,44 +20,34 @@
                     "t9nTarget": {
                         "type": "string",
                         "format": "json-pointer"
-                    }
-                },
-                "required": ["t9nScheme", "t9nTarget"],
-                "$dynamicRef": "#t9n-value"
-            }
-        }
-    },
-    "$defs": {
-        "t9nValueSchema": {
-            "$dynamicAnchor": "t9n-value",
-            "type": "object",
-            "properties": {
-                "t9nConst": true,
-                "t9nType": {
-                    "enum": ["null", "boolean", "integer", "number", "string", "array", "object"]
-                },
-                "t9nSource": {
-                    "type": ["string", "array"],
-                    "items": {
+                    },
+                    "t9nConst": true,
+                    "t9nType": {
+                        "enum": ["null", "boolean", "integer", "number", "string", "array", "object"]
+                    },
+                    "t9nSource": {
+                        "type": ["string", "array"],
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "t9nSeparator": {
                         "type": "string"
-                    }
-                },
-                "t9nSeparator": {
-                    "type": "string"
-                },
-                "t9nFilter": {
-                    "type": "string"
-                },
-                "t9nMap": {
-                    "type": "object"
-                },
-                "t9nItems": {
-                    "$dynamicRef": "#t9n-value"
-                },
-                "t9nProperties": {
-                    "type": "object",
-                    "additionalProperties": {
-                        "$dynamicRef": "#t9n-value"
+                    },
+                    "t9nFilter": {
+                        "type": "string"
+                    },
+                    "t9nMap": {
+                        "type": "object"
+                    },
+                    "t9nArray": {
+                        "$dynamicRef": "#t9n-schema"
+                    },
+                    "t9nObject": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "$dynamicRef": "#t9n-schema"
+                        }
                     }
                 }
             }
