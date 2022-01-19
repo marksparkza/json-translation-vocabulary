@@ -32,9 +32,6 @@
             "type": "object",
             "properties": {
                 "t9nConst": true,
-                "t9nType": {
-                    "enum": ["null", "boolean", "integer", "number", "string", "array", "object"]
-                },
                 "t9nSource": {
                     "type": ["string", "array"],
                     "items": {
@@ -45,10 +42,10 @@
                     "type": "string"
                 },
                 "t9nFilter": {
-                    "type": "string"
+                    "type": ["string", "object"]
                 },
-                "t9nMap": {
-                    "type": "object"
+                "t9nCast": {
+                    "enum": ["boolean", "integer", "number", "string"]
                 },
                 "t9nArray": {
                     "$dynamicRef": "#t9n-value"
