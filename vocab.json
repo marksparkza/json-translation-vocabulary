@@ -19,6 +19,9 @@
                     "t9nTarget": {
                         "type": "string",
                         "format": "json-pointer"
+                    },
+                    "t9nCondition": {
+                        "$dynamicRef": "#meta"
                     }
                 },
                 "required": ["t9nScheme", "t9nTarget"],
