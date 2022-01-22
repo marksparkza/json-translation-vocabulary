@@ -11,6 +11,7 @@
         "translations": {
             "type": "array",
             "items": {
+                "$dynamicAnchor": "t9n",
                 "type": "object",
                 "properties": {
                     "t9nScheme": {
@@ -36,12 +37,12 @@
             "properties": {
                 "t9nConst": true,
                 "t9nSource": {
-                    "type": ["string", "array"],
-                    "items": {
-                        "type": "string"
-                    }
+                    "anyOf": [
+                        {"$dynamicRef": "#t9n-source"},
+                        {"type": "array", "items": {"$dynamicRef": "#t9n-source"}}
+                    ]
                 },
-                "t9nSeparator": {
+                "t9nJoin": {
                     "type": "string"
                 },
                 "t9nFilter": {
@@ -60,6 +61,12 @@
                     }
                 }
             }
+        },
+        "t9nSourceSchema": {
+            "$dynamicAnchor": "t9n-source",
+            "type": "string",
+            "format": "relative-json-pointer",
+            "default": "0"
         }
     }
 }
