@@ -37,13 +37,15 @@
             "properties": {
                 "t9nConst": true,
                 "t9nSource": {
-                    "anyOf": [
-                        {"$dynamicRef": "#t9n-source"},
-                        {"type": "array", "items": {"$dynamicRef": "#t9n-source"}}
-                    ]
+                    "$dynamicRef": "#t9n-source"
                 },
-                "t9nJoin": {
-                    "type": "string"
+                "t9nConcat": {
+                    "type": "array",
+                    "items": {"$dynamicRef": "#t9n-source"}
+                },
+                "t9nSep": {
+                    "type": "string",
+                    "default": ""
                 },
                 "t9nFilter": {
                     "type": ["string", "object"]
