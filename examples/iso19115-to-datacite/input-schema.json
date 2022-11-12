@@ -1,5 +1,5 @@
 {
-    "$schema": "https://jschon.dev/ext/translation/schema",
+    "$schema": "https://jschon.dev/meta/translation/schema",
     "type": "object",
     "translations": [
         {

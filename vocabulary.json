@@ -1,9 +1,10 @@
 {
-    "title": "A meta-schema describing the syntax of the JSON translation vocabulary",
-    "$id": "https://jschon.dev/ext/translation/vocab",
+    "title": "JSON translation vocabulary meta-schema",
+    "description": "A meta-schema describing the keywords of a JSON translation vocabulary",
+    "$id": "https://jschon.dev/meta/translation/vocabulary",
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "$vocabulary": {
-        "https://jschon.dev/ext/translation": true
+        "https://jschon.dev/vocab/translation": true
     },
     "$dynamicAnchor": "meta",
     "type": ["object", "boolean"],
